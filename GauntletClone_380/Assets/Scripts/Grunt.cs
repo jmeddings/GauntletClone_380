@@ -2,27 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ghost : BaseEnemy
+public class Grunt : BaseEnemy
 {
-    public int _damage;
-    public int _health;
-
+    public int health;
+    public int damage;
     public void Start()
     {
         if (enemySpawner.health == 3)
         {
-            _damage = 30;
-            _health = 3;
+            damage = 10;
+            health = 3;
         }
         else if (enemySpawner.health == 2)
         {
-            _damage = 20;
-            _health = 2;
+            damage = 8;
+            health = 2;
         }
         else if (enemySpawner.health == 1)
         {
-            _damage = 10;
-            _health = 1;
+            damage = 5;
+            health = 1;
         }
     }
 
