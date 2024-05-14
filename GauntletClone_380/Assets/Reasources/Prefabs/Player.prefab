@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 7849823725219350283}
   - component: {fileID: 5414782841921862848}
   - component: {fileID: 5007982084786552571}
+  - component: {fileID: -8825366450376487833}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -296,6 +297,40 @@ MonoBehaviour:
   playerProjectile: {fileID: 7462007944031216523, guid: ce233aadb4593364c833ddeea63f9b94,
     type: 3}
   deleteCamera: 0
+  playerScore: 0
+  key: 0
+  potion: 0
+  health: 600
+  demon: {fileID: 216156144271632172, guid: 592a462b020f9844dbdd6d82827d4b39, type: 3}
+  ghost: {fileID: 567811700531247019, guid: c371f9829ebba98419d03b2bc748868d, type: 3}
+  grunt: {fileID: 4519912302872385710, guid: 369f85d92d71ca64a9e3c3738ce42c23, type: 3}
+--- !u!54 &-8825366450376487833
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135183116302344558}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &8635752955870743886
 GameObject:
   m_ObjectHideFlags: 0

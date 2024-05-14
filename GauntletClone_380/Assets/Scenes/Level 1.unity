@@ -1025,6 +1025,13 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   playerProjectile: {fileID: 0}
   deleteCamera: 0
+  playerScore: 0
+  key: 0
+  potion: 0
+  health: 600
+  demon: {fileID: 0}
+  ghost: {fileID: 0}
+  grunt: {fileID: 0}
 --- !u!1001 &1183790936
 PrefabInstance:
   m_ObjectHideFlags: 0

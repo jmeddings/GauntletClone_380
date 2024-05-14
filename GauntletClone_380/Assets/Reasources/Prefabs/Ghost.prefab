@@ -101,7 +101,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -120,13 +120,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  player: {fileID: 0}
+  player: {fileID: 3338508464734939784, guid: 3cd934a0a62c9614cb4f83664f73d1d9, type: 3}
   enemyTransform: {fileID: 0}
   enemySpawner: {fileID: 0}
   playerColl: {fileID: 0}
   detectionRadius: 200
-  _damage: 0
-  _health: 0
+  keyPref: {fileID: 8457210531301232680, guid: 92774521ff3635c47adb6f46701ef2c5, type: 3}
+  potPref: {fileID: 6239657312226781070, guid: ab69a28616ef2014db765fa085b0a252, type: 3}
+  foodPref: {fileID: 2093735117499148027, guid: aa814b1137ddf6d40bf3a342872b74d5,
+    type: 3}
+  damage: 0
+  health: 0
 --- !u!54 &-8878326051880024691
 Rigidbody:
   m_ObjectHideFlags: 0
