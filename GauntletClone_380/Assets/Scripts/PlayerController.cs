@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        if (isHealing)
+        if (isHealing && (potion>=1))
         {
             healPlayer();
         }

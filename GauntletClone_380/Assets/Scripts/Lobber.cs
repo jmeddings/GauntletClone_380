@@ -28,8 +28,15 @@ public class Lobber : BaseEnemy
 
         InvokeRepeating("throwRock", 3f, attackSpeed);
     }
-    private void LateUpdate()
+    private void Update()
     {
+        Physics.OverlapSphere(enemyTransform.position, detectionRadius);
+        player = GameObject.FindWithTag("Player").transform;
+        Vector3 toPlayer = player.position - transform.position;
+        Vector3 playerDirection = toPlayer.normalized;
+        transform.rotation = Quaternion.LookRotation(playerDirection);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        enemyTransform.position += enemyTransform.forward * speed * Time.deltaTime;
         if (health <= 0)
         {
             gamba();

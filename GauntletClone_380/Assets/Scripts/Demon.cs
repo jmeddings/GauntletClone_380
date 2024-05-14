@@ -32,6 +32,22 @@ public class Demon : BaseEnemy
 
         InvokeRepeating("throwRock", 4.5f, throwSpeed);
     }
+    private void Update()
+    {
+        Physics.OverlapSphere(enemyTransform.position, detectionRadius);
+        player = GameObject.FindWithTag("Player").transform;
+        Vector3 toPlayer = player.position - transform.position;
+        Vector3 playerDirection = toPlayer.normalized;
+        transform.rotation = Quaternion.LookRotation(playerDirection);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        enemyTransform.position += enemyTransform.forward * speed * Time.deltaTime;
+        if (health <= 0)
+        {
+            gamba();
+            Destroy(gameObject);
+        }
+    }
+
     private void OnDisable()
     {
         CancelInvoke("throwRock");
@@ -43,15 +59,6 @@ public class Demon : BaseEnemy
         Rigidbody _projectileRB = _projectile.GetComponent<Rigidbody>();
         Vector3 forceToAdd = transform.forward * 10f + transform.up;
         _projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
-    }
-
-    private void LateUpdate()
-    {
-        if (health <= 0)
-        {
-            gamba();
-            Destroy(gameObject);
-        }
     }
     private void OnCollisionEnter(Collision collision)
     {

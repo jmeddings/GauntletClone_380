@@ -24,15 +24,22 @@ public class Grunt : BaseEnemy
             health = 1;
         }
     }
-
-    private void LateUpdate()
+    private void Update()
     {
+        Physics.OverlapSphere(enemyTransform.position, detectionRadius);
+        player = GameObject.FindWithTag("Player").transform;
+        Vector3 toPlayer = player.position - transform.position;
+        Vector3 playerDirection = toPlayer.normalized;
+        transform.rotation = Quaternion.LookRotation(playerDirection);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        enemyTransform.position += enemyTransform.forward * speed * Time.deltaTime;
         if (health <= 0)
         {
             gamba();
             Destroy(gameObject);
         }
     }
+ 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bullet")
