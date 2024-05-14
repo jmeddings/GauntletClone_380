@@ -22,7 +22,7 @@ public class Death : BaseEnemy
         }
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (health <= 0)
         {

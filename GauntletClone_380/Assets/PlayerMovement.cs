@@ -44,6 +44,15 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Potion"",
+                    ""type"": ""Button"",
+                    ""id"": ""8cdd1642-e615-440e-8949-25de1576c244"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -134,6 +143,28 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7fff2ec-5a35-4e2f-983a-b15249f07a35"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Potion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""324866e5-d9cf-4ca0-a011-ce677b439a71"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Potion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -167,6 +198,7 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_Potion = m_Player.FindAction("Potion", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -230,12 +262,14 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_Potion;
     public struct PlayerActions
     {
         private @PlayerMovement m_Wrapper;
         public PlayerActions(@PlayerMovement wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @Potion => m_Wrapper.m_Player_Potion;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -251,6 +285,9 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
             @Fire.started += instance.OnFire;
             @Fire.performed += instance.OnFire;
             @Fire.canceled += instance.OnFire;
+            @Potion.started += instance.OnPotion;
+            @Potion.performed += instance.OnPotion;
+            @Potion.canceled += instance.OnPotion;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -261,6 +298,9 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
             @Fire.started -= instance.OnFire;
             @Fire.performed -= instance.OnFire;
             @Fire.canceled -= instance.OnFire;
+            @Potion.started -= instance.OnPotion;
+            @Potion.performed -= instance.OnPotion;
+            @Potion.canceled -= instance.OnPotion;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -300,5 +340,6 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnPotion(InputAction.CallbackContext context);
     }
 }

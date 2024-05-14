@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private float _bulletSpeed = 13f;
     private float _playerSpeed = 8f;
     public bool deleteCamera = false;
+    public bool isHealing = false;
     //
     public float playerScore;
     public float key;
@@ -30,10 +32,12 @@ public class PlayerController : MonoBehaviour
     {
         _playerController = gameObject.AddComponent<CharacterController>();
         playerScore = 0;
+        DontDestroyOnLoad(this);
     }
 
     private void Update()
     {
+        health -= Time.deltaTime;
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
         _playerController.Move(move * Time.deltaTime * _playerSpeed);
 
@@ -48,6 +52,15 @@ public class PlayerController : MonoBehaviour
             playerAttack();
             Invoke(nameof(AttackCoolDown), 0.5f);
         }
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+        if (isHealing && (potion >= 1))
+        {
+            health = health + 300;
+            isHealing = false;
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -60,6 +73,10 @@ public class PlayerController : MonoBehaviour
     {
         isShooting = context.action.triggered;
         deleteCamera = true;
+    }
+    public void UsePotion(InputAction.CallbackContext context)
+    {
+        isHealing = context.action.triggered;
     }
 
     private void playerAttack()
@@ -172,5 +189,17 @@ public class PlayerController : MonoBehaviour
             health -= 200;
         }
 
+
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "end1")
+        {
+            SceneManager.LoadScene("Level 2");
+        }
+        if (other.gameObject.tag == "end2")
+        {
+            SceneManager.LoadScene("Level 3");
+        }
     }
 }
