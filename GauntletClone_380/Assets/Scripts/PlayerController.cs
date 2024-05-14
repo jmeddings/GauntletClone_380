@@ -101,30 +101,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Items
-        if(collision.gameObject.tag == "Food")
-        {
-            health += 50;
-            collision.gameObject.SetActive(false);
-            Destroy(collision.gameObject);
-        }
-        if (collision.gameObject.tag == "Key")
-        {
-            key += 1;
-            collision.gameObject.SetActive(false);
-            Destroy(collision.gameObject);
-        }
-        if (collision.gameObject.tag == "Potion")
-        {
-            potion += 1;
-            collision.gameObject.SetActive(false);
-            Destroy(collision.gameObject);
-        }
 
 
-
-            //Projectiles
-            if (collision.gameObject.tag == "Rock")
+        //Projectiles
+        if (collision.gameObject.tag == "Rock")
         {
             health -= 3;
         }
@@ -207,6 +187,24 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "end2")
         {
             SceneManager.LoadScene("Level 3");
+        }
+        if(other.gameObject.tag == "Food")
+        {
+            health += 50;
+            other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "Key")
+        {
+            key += 1;
+            other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "Potion")
+        {
+            potion += 1;
+            other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
         }
     }
 }
