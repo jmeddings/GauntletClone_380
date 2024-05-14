@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public GameObject playerProjectile;
     private float _bulletSpeed = 10f;
     private float _playerSpeed = 6f;
+    public bool deleteCamera = false;
 
     private void Start()
     {
@@ -33,7 +34,6 @@ public class PlayerController : MonoBehaviour
 
         if (isShooting && !isCooling)
         {
-            Debug.Log("bullet shot");
             playerAttack();
             Invoke(nameof(AttackCoolDown), 0.5f);
         }
@@ -42,11 +42,13 @@ public class PlayerController : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        deleteCamera = true;
     }
 
     public void Shoot(InputAction.CallbackContext context)
     {
         isShooting = context.action.triggered;
+        deleteCamera = true;
     }
 
     private void playerAttack()
