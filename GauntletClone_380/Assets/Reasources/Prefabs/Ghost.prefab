@@ -119,14 +119,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1fd8eb1816e7d748afdd2ac52210197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
-  health: 3
   speed: 4
-  attackSpeed: 0
   player: {fileID: 0}
-  enemyRB: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
+  enemyTransform: {fileID: 0}
   enemySpawner: {fileID: 0}
+  playerColl: {fileID: 0}
+  detectionRadius: 200
+  _damage: 0
+  _health: 0
 --- !u!54 &-8878326051880024691
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -152,5 +152,5 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0

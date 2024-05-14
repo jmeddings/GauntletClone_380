@@ -70,8 +70,8 @@ MonoBehaviour:
   health: 3
   enemyPrefab: {fileID: 1042625792184196176, guid: c371f9829ebba98419d03b2bc748868d,
     type: 3}
-  spawnFreq: 3
-  spawnStart: 0
+  spawnFreq: 2
+  spawnStart: 3
 --- !u!54 &5406391013052254830
 Rigidbody:
   m_ObjectHideFlags: 0

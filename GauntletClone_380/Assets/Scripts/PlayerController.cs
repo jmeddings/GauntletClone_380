@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     public bool isCooling = false;
     public Transform spawnPoint;
     public GameObject playerProjectile;
-    private float _bulletSpeed = 10f;
-    private float _playerSpeed = 6f;
+    private float _bulletSpeed = 13f;
+    private float _playerSpeed = 8f;
     public bool deleteCamera = false;
 
     private void Start()

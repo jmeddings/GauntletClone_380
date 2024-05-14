@@ -71,7 +71,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 4334462398092180458, guid: 369f85d92d71ca64a9e3c3738ce42c23,
     type: 3}
   spawnFreq: 3
-  spawnStart: 0
+  spawnStart: 4
 --- !u!54 &8702942009732570509
 Rigidbody:
   m_ObjectHideFlags: 0
