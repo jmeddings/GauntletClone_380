@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,15 +15,21 @@ public class PlayerController : MonoBehaviour
     private float _bulletSpeed = 13f;
     private float _playerSpeed = 8f;
     public bool deleteCamera = false;
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
+    //
+    public float playerScore;
+    public float key;
+    public float potion;
+    public float health = 600;
+    //
+    public Demon demon;
+    public Ghost ghost;
+    public Grunt grunt;
+    //
 
     private void Start()
     {
         _playerController = gameObject.AddComponent<CharacterController>();
+        playerScore = 0;
     }
 
     private void Update()
@@ -70,15 +75,102 @@ public class PlayerController : MonoBehaviour
         isCooling = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.tag == "end1")
+        //Items
+        if(collision.gameObject.tag == "Food")
         {
-            SceneManager.LoadScene("Level 2");
+            health += 50;
+            collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
         }
-        if (other.gameObject.tag == "end2")
+        if (collision.gameObject.tag == "Key")
         {
-            SceneManager.LoadScene("Level 3");
+            key += 1;
+            collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
         }
+        if (collision.gameObject.tag == "Potion")
+        {
+            potion += 1;
+            collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
+        }
+
+
+
+            //Projectiles
+            if (collision.gameObject.tag == "Rock")
+        {
+            health -= 3;
+        }
+
+        if (collision.gameObject.tag == "Fireball")
+        {
+            health -= 10;
+        }
+
+        //Enemy bodies
+        if (collision.gameObject.tag == "Lobber")
+        {
+            health -= 3;
+        }
+        if (collision.gameObject.tag == "Demon")
+        {
+            if(demon.health == 3)
+            {
+                health -= 10;
+            }
+            if (demon.health == 2)
+            {
+                health -= 8;
+            }
+            if (demon.health == 3)
+            {
+                health -= 5;
+            }
+        }
+        if (collision.gameObject.tag == "Grunt")
+        {
+            if (grunt.health == 3)
+            {
+                health -= 10;
+            }
+            if (grunt.health == 2)
+            {
+                health -= 8;
+            }
+            if (grunt.health == 3)
+            {
+                health -= 5;
+            }
+        }
+
+        if (collision.gameObject.tag == "Ghost")
+        {
+            if (ghost.health == 3)
+            {
+                health -= 30;
+            }
+            if (ghost.health == 2)
+            {
+                health -= 20;
+            }
+            if (ghost.health == 3)
+            {
+                health -= 10;
+            }
+        }
+
+        if(collision.gameObject.tag == "Thieve")
+        {
+            health -= 10;
+        }
+
+        if(collision.gameObject.tag == "Death")
+        {
+            health -= 200;
+        }
+
     }
 }

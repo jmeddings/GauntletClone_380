@@ -12,8 +12,10 @@ TagManager:
   - Thief
   - Rock
   - Fireball
-  - end1
-  - end2
+  - Key
+  - Food
+  - Potion
+  - Bullet
   layers:
   - Default
   - TransparentFX

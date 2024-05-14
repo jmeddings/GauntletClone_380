@@ -101,7 +101,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -152,6 +152,10 @@ MonoBehaviour:
   enemySpawner: {fileID: 0}
   playerColl: {fileID: 0}
   detectionRadius: 200
+  keyPref: {fileID: 8457210531301232680, guid: 92774521ff3635c47adb6f46701ef2c5, type: 3}
+  potPref: {fileID: 6239657312226781070, guid: ab69a28616ef2014db765fa085b0a252, type: 3}
+  foodPref: {fileID: 2093735117499148027, guid: aa814b1137ddf6d40bf3a342872b74d5,
+    type: 3}
   rockPrefab: {fileID: 7000590920777383759, guid: c8c1ac1d64914fb4c885f7d6b09b65fb,
     type: 3}
   attackSpeed: 0
