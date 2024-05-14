@@ -12,6 +12,8 @@ TagManager:
   - Thief
   - Rock
   - Fireball
+  - end1
+  - end2
   layers:
   - Default
   - TransparentFX

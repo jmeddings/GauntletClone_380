@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class PlayerController : MonoBehaviour
     private float _bulletSpeed = 13f;
     private float _playerSpeed = 8f;
     public bool deleteCamera = false;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
 
     private void Start()
     {
@@ -62,5 +68,17 @@ public class PlayerController : MonoBehaviour
     private void AttackCoolDown()
     {
         isCooling = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "end1")
+        {
+            SceneManager.LoadScene("Level 2");
+        }
+        if (other.gameObject.tag == "end2")
+        {
+            SceneManager.LoadScene("Level 3");
+        }
     }
 }

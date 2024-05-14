@@ -38,7 +38,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (target)
         {
-            rb.velocity = new Vector3(moveDirection.x, moveDirection.y, 0f) * speed;
+            rb.velocity = new Vector3(moveDirection.x, 0f, moveDirection.z) * speed;
         }
     }
     public void MoveToPlayer()
@@ -46,7 +46,7 @@ public class CameraFollow : MonoBehaviour
         if (target)
         {
             Vector3 direction = (target.position - transform.position).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
             moveDirection = direction;
         }
     }
