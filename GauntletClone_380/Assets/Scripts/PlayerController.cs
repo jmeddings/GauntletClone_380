@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerController = gameObject.AddComponent<CharacterController>();
         playerScore = 0;
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update()
@@ -56,10 +56,9 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        if (isHealing && (potion >= 1))
+        if (isHealing)
         {
-            health = health + 300;
-            isHealing = false;
+            healPlayer();
         }
     }
 
@@ -77,6 +76,7 @@ public class PlayerController : MonoBehaviour
     public void UsePotion(InputAction.CallbackContext context)
     {
         isHealing = context.action.triggered;
+        Debug.Log("Healing");
     }
 
     private void playerAttack()
@@ -90,6 +90,13 @@ public class PlayerController : MonoBehaviour
     private void AttackCoolDown()
     {
         isCooling = false;
+    }
+
+    private void healPlayer()
+    {
+        health = health + 300;
+        isHealing = false;
+        Debug.Log("Healed");
     }
 
     private void OnCollisionEnter(Collision collision)

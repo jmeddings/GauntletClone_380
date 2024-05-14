@@ -16,6 +16,9 @@ TagManager:
   - Food
   - Potion
   - Bullet
+  - end2
+  - end1
+  - wall
   layers:
   - Default
   - TransparentFX

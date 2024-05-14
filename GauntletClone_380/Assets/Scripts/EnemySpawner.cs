@@ -35,5 +35,9 @@ public class EnemySpawner : MonoBehaviour
         {
             --health;
         }
+        if (other.gameObject.tag == "Bullet")
+        {
+            --health;
+        }
     }
 }

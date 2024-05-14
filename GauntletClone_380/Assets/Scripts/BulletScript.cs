@@ -7,21 +7,63 @@ public class BulletScript : MonoBehaviour
 {
     private void Update()
     {
-        if (this.gameObject.transform.position.x >= 50)
-        {
-            Destroy(this.gameObject);
-        }
-        if (this.gameObject.transform.position.z >= 50)
-        {
-            Destroy(this.gameObject);
-        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "Demon")
         {
             this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "Ghost")
+        {
+            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "Death")
+        {
+            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "Thief")
+        {
+            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "Lobber")
+        {
+            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "Grunt")
+        {
+            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "wall")
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "Key")
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "Food")
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "Potion")
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "end1")
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "end2")
+        {
             Destroy(this.gameObject);
         }
     }
